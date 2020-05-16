@@ -15,3 +15,8 @@ void BST :: printPreOrder(Node *n) const{
 
 }
 
+BST :: Node(string name, int rank, int location ) {
+    movie_name = name;
+    rating = rank;
+    depth = location;
+}
