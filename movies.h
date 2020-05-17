@@ -12,6 +12,10 @@ class Node{
     //accessors
     string getMovieName() const;
     int getRating() const;
+    int getDepth() const; 
+    Node* getLeft() const;
+    Node* getRight() const;
+    Node* getParent() const;
     //mutators 
     void setMovieName(string source);
     void setRating(int source);

@@ -10,12 +10,15 @@ BST :: BST () : root(0) {} //constructor
 //BST :: ~BST () {   }
 
 void BST :: printPreOrder() const{
-    return;
-    //printPreOrder(root);
+    printPreOrder(getRoot());
 }
 
 void BST :: printPreOrder(Node *n) const{
-return;
+    if(n){
+        cout << n->getMovieName()<< ", " << n->getRating() << ", " << n->getDepth() << endl;
+        printPreOrder(n->getLeft());
+        printPreOrder(n->getRight());
+    }
 }
 
 Node* BST :: getRoot() const{
@@ -56,6 +59,22 @@ void Node:: setRating(int source){
     rating = source;
 }
 
+int Node :: getDepth() const{
+    return depth; 
+}
+
 void Node :: setDepth(int source){
     depth = source;
+}
+
+Node* Node :: getLeft() const{
+    return left; 
+}
+
+Node* Node :: getRight() const{
+        return right;
+}
+
+Node* Node :: getParent() const{
+    return parent;
 }
