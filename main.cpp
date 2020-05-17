@@ -6,6 +6,8 @@
 #include <vector>
 #include <cstring>
 #include <algorithm>
+#include <set>
+#include "movies.h"
 
 using namespace std;
 
@@ -40,14 +42,13 @@ int main(int argc, char** argv){
   // to contain the name and rating in the input file
 
   // Read each file and store the name and rating
-  BST tree;
+  //BST tree;
+  set <Node> tree;
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
-    Node leaf()
-    
-    
-    // Use std::string movieName and double movieRating
-    // to construct your Movie objects
-    cout << movieName << " has rating " << movieRating << endl;
+  //  Node leaf(moviename, movieRating); 
+   Node leaf(movieName, movieRating);
+   tree.insert(leaf);
+   cout << movieName << " has rating " << movieRating << endl;
   }
   movieFile.close();
 

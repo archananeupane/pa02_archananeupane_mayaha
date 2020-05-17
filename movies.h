@@ -3,31 +3,42 @@
 using namespace std; 
 #ifndef MOVIES_H
 #define MOVIES_H
-
-class BST{
-
-public:
-BST() {root = 0;} //constructor
-//~BST();
-bool insert();
-void printPreOrder() const;
-
-private:
 class Node{
     public:
     Node();
+    Node(string name, int rank) : movie_name(name) , rating(rank){
+        left = right = parent = 0;
+    }
+    //accessors
+    string getMovieName() const;
+    int getRating() const;
+    //mutators 
+    void setMovieName(string source);
+    void setRating(int source);
+    void setDepth(int source);
+
+    private:
     string movie_name;
     int rating; 
     int depth; // number of nodes on the path from the root to the node containing the movie
     Node *left, *right, *parent; 
 
 };
+
+class BST{
+
+public:
+BST(); //constructor
+//~BST();
+//bool insert( Node &n); 
+void printPreOrder() const;
+Node * getRoot() const; 
+void printPreOrder(Node *n) const;
+
+private:
+
 Node *root; 
-bool insert( Node *n); 
-void printPreOrder(Node *n) const; 
-
 };
-
 
 
 
