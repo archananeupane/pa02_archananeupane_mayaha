@@ -5,7 +5,9 @@ using namespace std;
 #include "movies.h"
 
 //BST Functions
-BST :: BST () : root(0) {} //constructor
+BST::BST(){ //constructor
+    root = NULL; 
+} 
 
 //BST :: ~BST () {   }
 
@@ -35,6 +37,10 @@ bool BST :: insert(string name_source, int rating_source){
 
 }
 */
+
+void BST :: search(Node *n, string argv[3]){
+    
+}
 //Node Functions
 //DEFAULT CONSTRUCTOR
 Node::Node(){

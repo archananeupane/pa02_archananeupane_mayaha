@@ -34,7 +34,8 @@ class BST{
 public:
 BST(); //constructor
 //~BST();
-//bool insert( Node &n); 
+//bool insert( Node &n);
+void search(Node *n,string argv[3]); 
 void printPreOrder() const;
 Node * getRoot() const; 
 void printPreOrder(Node *n) const;
@@ -43,12 +44,6 @@ private:
 
 Node *root; 
 };
-
-
-
-
-
-
 
 
 #endif

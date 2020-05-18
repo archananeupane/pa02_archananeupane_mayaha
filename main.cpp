@@ -42,16 +42,20 @@ int main(int argc, char** argv){
   // to contain the name and rating in the input file
 
   // Read each file and store the name and rating
-  //BST tree;
-  set <Node> tree;
+  BST tree; 
+  //set <Node> tree;
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
-  //  Node leaf(moviename, movieRating); 
    Node leaf(movieName, movieRating);
-   tree.insert(leaf);
+   //tree.insert(leaf);
+   
    cout << movieName << " has rating " << movieRating << endl;
   }
   movieFile.close();
 
+  if (flag == true){
+    tree.printPreOrder(tree.getRoot());
+
+  }
   return 0;
 }
 
