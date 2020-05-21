@@ -21,6 +21,7 @@ class Node{
     void setRating(int source);
     void setDepth(int source);
 
+
     private:
     string movie_name;
     int rating; 
@@ -34,7 +35,7 @@ class BST{
 public:
 BST(); //constructor
 //~BST();
-//bool insert( Node &n);
+bool insert(string name_source, int rating_source);
 void search(Node *n,string argv[3]); 
 void printPreOrder() const;
 Node * getRoot() const; 

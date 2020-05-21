@@ -26,17 +26,29 @@ void BST :: printPreOrder(Node *n) const{
 Node* BST :: getRoot() const{
 return root; 
 }
-/*
+
 bool BST :: insert(string name_source, int rating_source){
+    Node * tmp = root; 
     int count = 0;
     if(root==NULL){
         root = new Node;
         root->setMovieName(name_source);
         root->setRating(rating_source);
+        return true;
+    }
+    while(name_source < tmp -> getMovieName()){
+        if()
+        tmp = tmp -> getLeft();
+            }
+        
+        }
+    
+
     }
 
+
 }
-*/
+
 
 void BST :: search(Node *n, string argv[3]){
     
@@ -84,3 +96,10 @@ Node* Node :: getRight() const{
 Node* Node :: getParent() const{
     return parent;
 }
+
+/*bool Node :: operator<(const Node& n1){
+    return (this->getMovieName()<n1.getMovieName());
+}*/
+/*bool operator<(const Node& n1, const Node& n2){
+    return n1.getMovieName()<n2.getMovieName();
+}*/

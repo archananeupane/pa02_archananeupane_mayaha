@@ -13,6 +13,9 @@ using namespace std;
 
 bool parseLine(string &line, string &movieName, double &movieRating);
 
+bool operator<(const Node& n1, const Node& n2){
+    return n1.getMovieName()<n2.getMovieName();
+}
 int main(int argc, char** argv){
   if(argc < 4){
     cerr << "Usage: " << argv[ 0 ] << "arg1 arg2 arg3" << endl;
@@ -42,18 +45,18 @@ int main(int argc, char** argv){
   // to contain the name and rating in the input file
 
   // Read each file and store the name and rating
-  BST tree; 
-  //set <Node> tree;
+  //BST tree; 
+  std:: set <Node> tree1;
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
    Node leaf(movieName, movieRating);
-   //tree.insert(leaf);
-   
+   tree1.insert(leaf);
+   cout <<leaf.getMovieName()<< " ";
    cout << movieName << " has rating " << movieRating << endl;
   }
   movieFile.close();
 
   if (flag == true){
-    tree.printPreOrder(tree.getRoot());
+   // tree.printPreOrder(tree.getRoot());
 
   }
   return 0;
