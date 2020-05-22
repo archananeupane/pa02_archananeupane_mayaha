@@ -55,6 +55,10 @@ Node* Node :: getParent() const{
 void Node :: setParent(Node *n){
     parent = n; 
 }
+Node* Node :: newNode(Node*n){
+n = new Node; 
+return n;
+}
 
 /*bool Node :: operator<(const Node& n1){
     return (this->getMovieName()<n1.getMovieName());
@@ -105,19 +109,19 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp){
         return insert(name_source, rating_source, tmp->getLeft());
         }
         else{
-            tmp  = new Node; //doesnt work
+            tmp = tmp->newNode(tmp->getLeft()); //doesnt work
             tmp -> setMovieName(name_source);
             tmp->setRating(rating_source);
             tmp -> setParent(tmp -> getLeft());
             return true;
         }
     }
-        else{
+        else{ 
             if(tmp -> getRight()){
             return insert(name_source, rating_source, tmp ->getRight());
             }
             else{
-            tmp = new Node;
+            tmp = tmp->newNode(tmp->getRight());
             tmp -> setMovieName(name_source);
             tmp->setRating(rating_source);
             tmp->setParent(tmp -> getRight());

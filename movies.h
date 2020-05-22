@@ -22,6 +22,7 @@ class Node{
     void setDepth(int source);
     void setParent(Node* n);
     void setLeft(Node *n);
+    Node* newNode(Node *n);
 
 
     private:
