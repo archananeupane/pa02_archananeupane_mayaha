@@ -20,6 +20,8 @@ class Node{
     void setMovieName(string source);
     void setRating(double source);
     void setDepth(int source);
+    void setParent(Node* n);
+    void setLeft(Node *n);
 
 
     private:
@@ -39,10 +41,11 @@ bool insert(string name_source, double rating_source);
 void search(Node *n,string argv[3]); 
 void printPreOrder() const;
 Node * getRoot() const; 
-void printPreOrder(Node *n) const;
+
 
 private:
-
+void printPreOrder(Node *n) const;
+bool insert(string name_source, double rating_source, Node *tmp);
 Node *root; 
 };
 

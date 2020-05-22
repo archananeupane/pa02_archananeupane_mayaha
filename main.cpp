@@ -52,11 +52,11 @@ int main(int argc, char** argv){
   }
   movieFile.close();
   
-  //tree.printPreOrder(); 
+  tree.printPreOrder(); 
   
   
   if (flag == true){
-   tree.printPreOrder(tree.getRoot());
+   //tree.printPreOrder(tree.getRoot());
 
   }
   return 0;

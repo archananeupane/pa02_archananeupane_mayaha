@@ -40,12 +40,20 @@ Node* Node :: getLeft() const{
     return left; 
 }
 
+void Node :: setLeft(Node *n){
+    left = n;
+}
+
 Node* Node :: getRight() const{
         return right;
 }
 
 Node* Node :: getParent() const{
     return parent;
+}
+
+void Node :: setParent(Node *n){
+    parent = n; 
 }
 
 /*bool Node :: operator<(const Node& n1){
@@ -79,23 +87,63 @@ return root;
 }
 
 bool BST :: insert(string name_source, double rating_source){
+    if(root == NULL){
+        root = new Node;
+        root->setMovieName(name_source);
+        root->setRating(rating_source);
+    }
+    return insert(name_source,rating_source, root);
+}
+
+bool BST :: insert(string name_source, double rating_source, Node *tmp){
+    if(name_source == tmp -> getMovieName()){
+        return false; 
+    }
+
+    if(name_source < tmp -> getMovieName()){
+        if(tmp -> getLeft()){
+        return insert(name_source, rating_source, tmp->getLeft());
+        }
+        else{
+            tmp  = new Node; //doesnt work
+            tmp -> setMovieName(name_source);
+            tmp->setRating(rating_source);
+            tmp -> setParent(tmp -> getLeft());
+            return true;
+        }
+    }
+        else{
+            if(tmp -> getRight()){
+            return insert(name_source, rating_source, tmp ->getRight());
+            }
+            else{
+            tmp = new Node;
+            tmp -> setMovieName(name_source);
+            tmp->setRating(rating_source);
+            tmp->setParent(tmp -> getRight());
+            return true;
+            }
+            
+        }
+}
+/*
+bool BST :: insert(string name_source, double rating_source){
     Node *tmp = root; 
-    const char *comparison = name_source.c_str();
     int count = 0;
-    if(root==NULL){
+    
+    if(root == NULL){
         root = new Node;
         root->setMovieName(name_source);
         root->setRating(rating_source);
     } 
    
     else{ 
-    const char* tmpComp = (tmp -> getMovieName()).c_str();    
-    while(tmp != NULL){   
-    if (strcmp(comparison, tmpComp) == 0){
+    while(tmp != NULL){    
+    if (name_source == tmp->getMovieName()){
        return false; 
-    }
-    //if(name_source < tmp -> getMovieName()){
-        if(strcmp(comparison, tmpComp) < 0){
+    } 
+
+    if(name_source < tmp -> getMovieName()){
         tmp = tmp -> getLeft();
         tmp = new Node;
         tmp -> setMovieName(name_source);
@@ -111,7 +159,7 @@ bool BST :: insert(string name_source, double rating_source){
     }
     return true; 
 }
-
+*/
     
 
 
