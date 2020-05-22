@@ -1,30 +1,30 @@
 //Archana Neupane and Maya Ha
 #include <string>
+#include <cstring>
 using namespace std; 
 #ifndef MOVIES_H
 #define MOVIES_H
 class Node{
     public:
     Node();
-    Node(string name, int rank) : movie_name(name) , rating(rank){
-        left = right = parent = 0;
-    }
+    Node(string name, double rank) : movie_name(name) , rating(rank){
+    left = right = parent = 0;}
     //accessors
     string getMovieName() const;
-    int getRating() const;
+    double getRating() const;
     int getDepth() const; 
     Node* getLeft() const;
     Node* getRight() const;
     Node* getParent() const;
     //mutators 
     void setMovieName(string source);
-    void setRating(int source);
+    void setRating(double source);
     void setDepth(int source);
 
 
     private:
     string movie_name;
-    int rating; 
+    double rating; 
     int depth; // number of nodes on the path from the root to the node containing the movie
     Node *left, *right, *parent; 
 
@@ -35,7 +35,7 @@ class BST{
 public:
 BST(); //constructor
 //~BST();
-bool insert(string name_source, int rating_source);
+bool insert(string name_source, double rating_source);
 void search(Node *n,string argv[3]); 
 void printPreOrder() const;
 Node * getRoot() const; 
