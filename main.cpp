@@ -48,20 +48,13 @@ int main(int argc, char** argv){
   BST tree; 
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
   tree.insert(movieName, movieRating); 
-  //tree.printPreOrder();
    //cout << movieName << " has rating " << movieRating << endl;
   }
   movieFile.close();
-  Node *n = tree.getRoot();
-  /*while(n->getLeft()){
-    n->setLeft(n->getLeft());
-    cout<<n->getMovieName() <<endl;
-  }*/
- tree.printPreOrder(); 
-  
-  
+    
   if (flag == true){
-   //tree.printPreOrder(tree.getRoot());
+   tree.printPreOrder();
+   cout<< "Best movie is ";
 
   }
   return 0;

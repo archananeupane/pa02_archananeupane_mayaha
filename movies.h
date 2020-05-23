@@ -7,7 +7,7 @@ using namespace std;
 class Node{
     public:
     Node();
-    Node(string name, double rank) : movie_name(name) , rating(rank){
+    Node(string name, double rank, int level) : movie_name(name) , rating(rank), depth(level){
     left = right = parent = 0;}
     //accessors
     string getMovieName() const;
@@ -23,7 +23,6 @@ class Node{
     void setParent(Node* n);
     void setRight(Node* n);
     void setLeft(Node *n);
-    Node* newNode(Node *n);
 
 
     private:
@@ -43,11 +42,12 @@ bool insert(string name_source, double rating_source);
 void search(Node *n,string argv[3]); 
 void printPreOrder() const;
 Node * getRoot() const; 
-
+int node_level;
+int counter;
 
 private:
 void printPreOrder(Node *n) const;
-bool insert(string name_source, double rating_source, Node *tmp);
+bool insert(string name_source, double rating_source, Node *tmp, int level);
 Node *root; 
 };
 

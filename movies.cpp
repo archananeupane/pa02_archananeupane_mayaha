@@ -59,10 +59,6 @@ Node* Node :: getParent() const{
 void Node :: setParent(Node *n){
     parent = n; 
 }
-Node* Node :: newNode(Node*n){
-n = new Node; 
-return n;
-}
 
 /*bool Node :: operator<(const Node& n1){
     return (this->getMovieName()<n1.getMovieName());
@@ -95,53 +91,53 @@ return root;
 }
 
 bool BST :: insert(string name_source, double rating_source){
+    node_level = 0;
     if(root == NULL){
         root = new Node;
         root->setMovieName(name_source);
         root->setRating(rating_source);
+        root->setDepth(0);
+        counter = 1;
+        return true;
     }
-    return insert(name_source,rating_source, root);
+    return insert(name_source,rating_source, root, 0);
 }
 
-bool BST :: insert(string name_source, double rating_source, Node *tmp){
-    static int depthleft = 0;
-    static int depthright = 0;
+bool BST :: insert(string name_source, double rating_source, Node *tmp, int level){
+    //static int depthleft = 0;
+    //static int depthright = 0;
     if(name_source == tmp -> getMovieName()){
         return false; 
     }
 
     if(name_source < tmp -> getMovieName()){
         if(tmp -> getLeft()){
-            depthleft++;
-            return insert(name_source, rating_source, tmp->getLeft());
+            //depthleft++;
+            return insert(name_source, rating_source, tmp->getLeft(), level+1);
         }
         else{
-            /*tmp = tmp->newNode(tmp->getLeft()); //doesnt work
-            tmp -> setMovieName(name_source);
-            tmp->setRating(rating_source);
-            tmp -> setParent(tmp -> getLeft());*/
-            tmp->setLeft(new Node());
+            tmp->setLeft(new Node("", 0, level+1));
+            counter++;
+            node_level= level +1;
             tmp->getLeft()->setMovieName(name_source);
             tmp->getLeft()->setRating(rating_source);
-            tmp->setDepth(depthleft);
+            //tmp->setDepth(depthleft);
             tmp->getLeft()->setParent(tmp);
             return true;
         }
     }
     else{ 
         if(tmp -> getRight()){
-            depthright++;
-            return insert(name_source, rating_source, tmp ->getRight());
+           // depthright++;
+            return insert(name_source, rating_source, tmp ->getRight(), level+1);
         }
         else{
-        /*tmp = tmp->newNode(tmp->getRight());
-        tmp -> setMovieName(name_source);
-        tmp->setRating(rating_source);
-        tmp->setParent(tmp -> getRight());*/
-        tmp->setRight(new Node());
+        tmp->setRight(new Node("", 0 , level+1));
+        counter++;
+        node_level = level +1;
         tmp->getRight()->setMovieName(name_source);
         tmp->getRight()->setRating(rating_source);
-        tmp->setDepth(depthright);
+        //tmp->setDepth(depthright);
         tmp->getRight()->setParent(tmp);
         return true;
         }
@@ -184,5 +180,9 @@ bool BST :: insert(string name_source, double rating_source){
 */
     
 
-
-//void BST :: search(Node *n, string argv[3]){}
+/*
+void BST :: search(Node *n, string argv[3]){
+    if (n->getMovieName() == NULL){
+        return;
+    }
+} */
