@@ -21,6 +21,7 @@ class Node{
     void setRating(double source);
     void setDepth(int source);
     void setParent(Node* n);
+    void setRight(Node* n);
     void setLeft(Node *n);
     Node* newNode(Node *n);
 

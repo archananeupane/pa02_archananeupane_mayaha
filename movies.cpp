@@ -48,6 +48,10 @@ Node* Node :: getRight() const{
         return right;
 }
 
+void Node :: setRight(Node* n){
+    right = n;
+}
+
 Node* Node :: getParent() const{
     return parent;
 }
@@ -109,26 +113,34 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp){
         return insert(name_source, rating_source, tmp->getLeft());
         }
         else{
-            tmp = tmp->newNode(tmp->getLeft()); //doesnt work
+            /*tmp = tmp->newNode(tmp->getLeft()); //doesnt work
             tmp -> setMovieName(name_source);
             tmp->setRating(rating_source);
-            tmp -> setParent(tmp -> getLeft());
+            tmp -> setParent(tmp -> getLeft());*/
+            tmp->setLeft(new Node());
+            tmp->getLeft()->setMovieName(name_source);
+            tmp->getLeft()->setRating(rating_source);
+            tmp->getLeft()->setParent(tmp);
             return true;
         }
     }
-        else{ 
-            if(tmp -> getRight()){
-            return insert(name_source, rating_source, tmp ->getRight());
-            }
-            else{
-            tmp = tmp->newNode(tmp->getRight());
-            tmp -> setMovieName(name_source);
-            tmp->setRating(rating_source);
-            tmp->setParent(tmp -> getRight());
-            return true;
-            }
-            
+    else{ 
+        if(tmp -> getRight()){
+        return insert(name_source, rating_source, tmp ->getRight());
         }
+        else{
+        /*tmp = tmp->newNode(tmp->getRight());
+        tmp -> setMovieName(name_source);
+        tmp->setRating(rating_source);
+        tmp->setParent(tmp -> getRight());*/
+        tmp->setRight(new Node());
+        tmp->getRight()->setMovieName(name_source);
+        tmp->getRight()->setRating(rating_source);
+        tmp->getRight()->setParent(tmp);
+        return true;
+        }
+            
+    }
 }
 /*
 bool BST :: insert(string name_source, double rating_source){

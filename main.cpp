@@ -53,11 +53,11 @@ int main(int argc, char** argv){
   }
   movieFile.close();
   Node *n = tree.getRoot();
-  while(n->getLeft()){
+  /*while(n->getLeft()){
     n->setLeft(n->getLeft());
     cout<<n->getMovieName() <<endl;
-  }
- //tree.printPreOrder(); 
+  }*/
+ tree.printPreOrder(); 
   
   
   if (flag == true){
