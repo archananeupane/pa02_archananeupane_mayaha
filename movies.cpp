@@ -104,13 +104,16 @@ bool BST :: insert(string name_source, double rating_source){
 }
 
 bool BST :: insert(string name_source, double rating_source, Node *tmp){
+    static int depthleft = 0;
+    static int depthright = 0;
     if(name_source == tmp -> getMovieName()){
         return false; 
     }
 
     if(name_source < tmp -> getMovieName()){
         if(tmp -> getLeft()){
-        return insert(name_source, rating_source, tmp->getLeft());
+            depthleft++;
+            return insert(name_source, rating_source, tmp->getLeft());
         }
         else{
             /*tmp = tmp->newNode(tmp->getLeft()); //doesnt work
@@ -120,13 +123,15 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp){
             tmp->setLeft(new Node());
             tmp->getLeft()->setMovieName(name_source);
             tmp->getLeft()->setRating(rating_source);
+            tmp->setDepth(depthleft);
             tmp->getLeft()->setParent(tmp);
             return true;
         }
     }
     else{ 
         if(tmp -> getRight()){
-        return insert(name_source, rating_source, tmp ->getRight());
+            depthright++;
+            return insert(name_source, rating_source, tmp ->getRight());
         }
         else{
         /*tmp = tmp->newNode(tmp->getRight());
@@ -136,6 +141,7 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp){
         tmp->setRight(new Node());
         tmp->getRight()->setMovieName(name_source);
         tmp->getRight()->setRating(rating_source);
+        tmp->setDepth(depthright);
         tmp->getRight()->setParent(tmp);
         return true;
         }
