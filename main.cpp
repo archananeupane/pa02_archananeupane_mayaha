@@ -48,7 +48,7 @@ int main(int argc, char** argv){
   BST tree; 
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
   tree.insert(movieName, movieRating); 
-   //cout << movieName << " has rating " << movieRating << endl;
+  cout << movieName << " has rating " << movieRating << endl;
   }
   movieFile.close();
     
