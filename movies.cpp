@@ -144,7 +144,6 @@ Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
             newTree->insert(n->getMovieName(), n->getRating());
-            cout<<n -> getMovieName() << endl;
             searchPrefixHelper(prefix, newTree, n->getLeft());
             searchPrefixHelper(prefix, newTree, n->getRight());
            
