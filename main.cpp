@@ -55,7 +55,7 @@ int main(int argc, char** argv){
   if (flag == true){
    tree.printPreOrder();
    Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
-   cout<< "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating();
+   cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
   }
   return 0;
 }
