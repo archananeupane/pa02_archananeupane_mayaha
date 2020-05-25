@@ -144,6 +144,7 @@ Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
             newTree->insert(n->getMovieName(), n->getRating());
+            cout<<n -> getMovieName() << endl;
             searchPrefixHelper(prefix, newTree, n->getLeft());
             searchPrefixHelper(prefix, newTree, n->getRight());
            
@@ -169,18 +170,17 @@ Node* BST :: highestRating(Node* n){
 Node* BST :: highestRatingHelper(Node* n){
     Node* tmp = n;
     if(n->getLeft()){
-        Node* maxLeft = highestRatingHelper(n->getLeft());
+       Node* maxLeft = highestRatingHelper(n->getLeft());
         if(tmp ->getRating() < maxLeft->getRating()){
             tmp = maxLeft;
         }
         else{
             return highestRatingHelper(maxLeft);
         }
-        
     }
     if(n->getRight()){
         Node* maxRight = highestRatingHelper(n->getRight());
-        if(tmp -> getRating() > maxRight-> getRating()){
+        if(tmp -> getRating() < maxRight-> getRating()){
             tmp = maxRight; 
         }
         else{
