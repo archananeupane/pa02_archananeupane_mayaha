@@ -97,15 +97,12 @@ bool BST :: insert(string name_source, double rating_source){
 }
 
 bool BST :: insert(string name_source, double rating_source, Node *tmp, int level){
-    //static int depthleft = 0;
-    //static int depthright = 0;
     if(name_source == tmp -> getMovieName()){
         return false; 
     }
 
     if(name_source < tmp -> getMovieName()){
         if(tmp -> getLeft()){
-            //depthleft++;
             return insert(name_source, rating_source, tmp->getLeft(), level+1);
         }
         else{
@@ -114,14 +111,12 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp, int leve
             node_level= level +1;
             tmp->getLeft()->setMovieName(name_source);
             tmp->getLeft()->setRating(rating_source);
-            //tmp->setDepth(depthleft);
             tmp->getLeft()->setParent(tmp);
             return true;
         }
     }
     else{ 
         if(tmp -> getRight()){
-           // depthright++;
             return insert(name_source, rating_source, tmp ->getRight(), level+1);
         }
         else{
@@ -130,7 +125,6 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp, int leve
         node_level = level +1;
         tmp->getRight()->setMovieName(name_source);
         tmp->getRight()->setRating(rating_source);
-        //tmp->setDepth(depthright);
         tmp->getRight()->setParent(tmp);
         return true;
         }
@@ -150,44 +144,49 @@ Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
             newTree->insert(n->getMovieName(), n->getRating());
+            searchPrefixHelper(prefix, newTree, n->getLeft());
+            searchPrefixHelper(prefix, newTree, n->getRight());
+           
+            
         }
         if(n->getMovieName().substr(0, prefix.size()) < prefix){
-            return searchPrefix(prefix, n->getRight());
+            return searchPrefixHelper(prefix,newTree, n->getRight());
         }
         else{
-            return searchPrefix(prefix, n->getLeft());
-        }
-    }
+            return searchPrefixHelper(prefix, newTree, n->getLeft());
+        } 
+    }   
         return newTree->getRoot();
 }
 
 Node* BST :: highestRating(Node* n){
-    Node* tmp = root;
     if(!n){
         return NULL;
-    }
+    } 
     return highestRatingHelper(n);
 }
 
 Node* BST :: highestRatingHelper(Node* n){
-    Node* tmp = root;
-    if(n->getRating() == tmp -> getRating()) {
-        return n;
-    }
-    else{
+    Node* tmp = n;
     if(n->getLeft()){
-        Node* max = highestRatingHelper(n->getLeft());
-        if(tmp ->getRating() < max->getRating()){
-            tmp = max;
+        Node* maxLeft = highestRatingHelper(n->getLeft());
+        if(tmp ->getRating() < maxLeft->getRating()){
+            tmp = maxLeft;
         }
+        else{
+            return highestRatingHelper(maxLeft);
+        }
+        
     }
     if(n->getRight()){
-        Node* max = highestRatingHelper(n->getRight());
-        if(tmp -> getRating() > max-> getRating()){
-            tmp = max; 
+        Node* maxRight = highestRatingHelper(n->getRight());
+        if(tmp -> getRating() > maxRight-> getRating()){
+            tmp = maxRight; 
+        }
+        else{
+            return highestRatingHelper(maxRight);
         }
     }
     return tmp; 
     }
-}
 
