@@ -180,7 +180,7 @@ Node* BST :: highestRatingHelper(Node* n){
     }
     if(n->getRight()){
         Node* maxRight = highestRatingHelper(n->getRight());
-        if(tmp -> getRating() < maxRight-> getRating()){
+        if(tmp -> getRating() > maxRight-> getRating()){
             tmp = maxRight; 
         }
         else{
