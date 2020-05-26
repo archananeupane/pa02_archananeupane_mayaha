@@ -168,24 +168,30 @@ Node* BST :: highestRating(Node* n){
 
 Node* BST :: highestRatingHelper(Node* n){
     Node* tmp = n;
+    if(n==NULL){
+        return 0;
+    }
     if(n->getLeft()){
        Node* maxLeft = highestRatingHelper(n->getLeft());
         if(tmp ->getRating() < maxLeft->getRating()){
             tmp = maxLeft;
         }
         else{
-            return highestRatingHelper(maxLeft);
+            //return highestRatingHelper(maxLeft);
+            return tmp;
         }
     }
     if(n->getRight()){
         Node* maxRight = highestRatingHelper(n->getRight());
-        if(tmp -> getRating() > maxRight-> getRating()){
+        if(tmp -> getRating() < maxRight-> getRating()){
             tmp = maxRight; 
-        }
+        } 
+    
         else{
-            return highestRatingHelper(maxRight);
+            //return highestRatingHelper(maxRight);
+            return tmp;
         }
     }
-    return tmp; 
-    }
+    return tmp;  
+}
 
