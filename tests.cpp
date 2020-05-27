@@ -37,6 +37,16 @@ void test_accessors_mutators(){
     START_TEST("test_accessors_mutators");
     //functions
     test_get_root();
+    test_get_parent();
+    test_set_parent();
+    test_get_movie_name();
+    test_set_movie_name();
+    test_get_rating();
+    test_set_rating();
+    test_get_left();
+    test_set_left();
+    test_get_right();
+    test_set_right();
     END_TEST("test_accessors_mutators");
 }
 
@@ -100,4 +110,77 @@ void test_get_root(){
     string testname = "check get root";
     BST b1;
     assertEquals(NULL, b1.getRoot(), testname);
+}
+
+void test_set_parent(){
+    string testname= "check set parent";
+    Node* n1 = new Node();
+    n1->setMovieName("Lion King");
+    Node n2;
+    n2.setParent(n1);
+    assertEquals(n1, n2.getParent(), testname);
+
+}
+
+void test_get_parent(){
+    string testname = "check get parent";
+    Node n1;
+    assertEquals(0, n1.getParent(), testname);
+}
+
+void test_get_movie_name(){
+    string testname = "check get movie name";
+    Node n1;
+    assertEquals("", n1.getMovieName(), testname);
+}
+
+
+void test_set_movie_name(){
+    string testname = "check set movie name";
+    Node n1;
+    n1.setMovieName("Lion King");
+    assertEquals("Lion King", n1.getMovieName(), testname);
+}
+
+void test_get_rating(){
+    string testname = "check get rating";
+    Node n1;
+    assertEquals(0, n1.getRating(), testname);
+}
+
+void test_set_rating(){
+    string testname = "check set rating";
+    Node n1;
+    n1.setRating(4.0);
+    assertEquals(4, n1.getRating(), testname);
+}
+
+void test_get_left(){
+    string testname = "check get left";
+    Node n1;
+    assertEquals(0, n1.getLeft(), testname);
+}
+
+void test_set_left(){
+    string testname = "check set left";
+    Node n1;
+    Node* n2 = new Node;
+    n2->setMovieName("Lion King");
+    n1.setLeft(n2);
+    assertEquals(n2, n1.getLeft(), testname);
+}
+
+void test_get_right(){
+    string testname = "check get right";
+    Node n1;
+    assertEquals(0, n1.getRight(), testname);
+}
+
+void test_set_right(){
+    string testname = "check set right";
+    Node n1;
+    Node* n2 = new Node;
+    n2->setMovieName("Lion King");
+    n1.setRight(n2);
+    assertEquals(n2, n1.getRight(), testname);
 }

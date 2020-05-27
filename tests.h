@@ -18,6 +18,17 @@ void test_search_prefix();
 //void test_highest_rating();
 void test_print_preorder();
 void test_get_root();
+void test_get_parent();
+void test_set_parent();
+void test_get_movie_name();
+void test_set_movie_name();
+void test_get_rating();
+void test_set_rating();
+void test_get_left();
+void test_set_left();
+void test_get_right();
+void test_set_right();
+
 void START_TEST(string testname){
   cout<<"Start "<<testname<<endl;
 }
@@ -49,6 +60,7 @@ void assertEquals(Node* expected, Node* actual, string testDescription){
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
   }
 }
+
 
 
 
