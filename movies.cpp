@@ -145,9 +145,7 @@ Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
             newTree->insert(n->getMovieName(), n->getRating());
             searchPrefixHelper(prefix, newTree, n->getLeft());
-            searchPrefixHelper(prefix, newTree, n->getRight());
-           
-            
+            searchPrefixHelper(prefix, newTree, n->getRight()); 
         }
         if(n->getMovieName().substr(0, prefix.size()) < prefix){
             return searchPrefixHelper(prefix,newTree, n->getRight());
@@ -176,21 +174,12 @@ Node* BST :: highestRatingHelper(Node* n){
         if(tmp ->getRating() < maxLeft->getRating()){
             tmp = maxLeft;
         }
-        else{
-            //return highestRatingHelper(maxLeft);
-            return tmp;
-        }
     }
     if(n->getRight()){
         Node* maxRight = highestRatingHelper(n->getRight());
         if(tmp -> getRating() < maxRight-> getRating()){
             tmp = maxRight; 
         } 
-    
-        else{
-            //return highestRatingHelper(maxRight);
-            return tmp;
-        }
     }
     return tmp;  
 }
