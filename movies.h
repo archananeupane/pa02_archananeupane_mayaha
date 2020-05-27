@@ -39,7 +39,7 @@ public:
 BST(); //constructor
 //~BST();
 bool insert(string name_source, double rating_source);
-Node* searchPrefix(string prefix, Node *n);
+int* searchPrefix(string prefix, Node *n);
 Node* highestRating(Node* n) ;
 void printPreOrder() const;
 Node * getRoot() const; 
@@ -49,7 +49,8 @@ int counter;
 private:
 void printPreOrder(Node *n) const;
 bool insert(string name_source, double rating_source, Node *tmp, int level);
-Node* searchPrefixHelper(string prefix, BST* newTree, Node* n);
+//Node* searchPrefixHelper(string prefix, BST* newTree, Node* n);
+int* searchPrefixHelper(string prefix, int* arr1, Node* n, int count);
 Node* highestRatingHelper(Node* n);
 Node *root; 
 };

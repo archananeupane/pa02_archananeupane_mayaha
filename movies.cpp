@@ -4,6 +4,7 @@
 using namespace std; 
 #include "movies.h"
 #include <cstring>
+#include <vector>
 //Node Functions
 //DEFAULT CONSTRUCTOR
 Node :: Node(){
@@ -132,31 +133,44 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp, int leve
     }
 }
 
-Node* BST :: searchPrefix(string prefix, Node *n){
-    BST* newTree = new BST; 
+int* BST :: searchPrefix(string prefix, Node *n){
+    //BST* newTree = new BST; 
+    //int arr1 [] = { };
+    vector <int> arr1;
+    int* p = arr1.data();
     if (!n){
-        return NULL;
+        return 0;
     }
-    return searchPrefixHelper(prefix,newTree, n);
+    //return searchPrefixHelper(prefix,newTree, n);
+    return searchPrefixHelper(prefix, p, n, 0);
 } 
 
-Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
+int* BST :: searchPrefixHelper(string prefix, int* arr1/*BST* newTree*/, Node* n, int count){
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
-            newTree->insert(n->getMovieName(), n->getRating());
-            searchPrefixHelper(prefix, newTree, n->getLeft());
-            searchPrefixHelper(prefix, newTree, n->getRight());
+            //newTree->insert(n->getMovieName(), n->getRating());
+            //searchPrefixHelper(prefix, newTree, n->getLeft());
+            //searchPrefixHelper(prefix, newTree, n->getRight());
+            arr1[count]=n->getRating();
+            count++;
+            searchPrefixHelper(prefix, arr1, n->getLeft(), count);
+            searchPrefixHelper(prefix, arr1, n->getRight(), count);
            
             
         }
         if(n->getMovieName().substr(0, prefix.size()) < prefix){
-            return searchPrefixHelper(prefix,newTree, n->getRight());
+            count++;
+            return searchPrefixHelper(prefix, arr1, n->getRight(), count);
+            //return searchPrefixHelper(prefix,newTree, n->getRight());
         }
         else{
-            return searchPrefixHelper(prefix, newTree, n->getLeft());
+            count++;
+            return searchPrefixHelper(prefix, arr1, n->getLeft(), count);
+            //return searchPrefixHelper(prefix, newTree, n->getLeft());
         } 
     }   
-        return newTree->getRoot();
+        //return newTree->getRoot();
+        return arr1;
 }
 
 Node* BST :: highestRating(Node* n){

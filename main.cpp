@@ -54,11 +54,13 @@ int main(int argc, char** argv){
     
   if (flag == true){
    tree.printPreOrder();
-   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
-   cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
+  //Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
+   //cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
   }
+  int* arr1 = tree.searchPrefix(argv[3], tree.getRoot());
   return 0;
 }
+
 
 bool parseLine(string &line, string &movieName, double &movieRating) {
   if(line.length() <= 0) return false;
