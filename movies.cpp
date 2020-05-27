@@ -174,24 +174,12 @@ Node* BST :: highestRatingHelper(Node* n){
         if(tmp ->getRating() < maxLeft->getRating()){
             tmp = maxLeft;
         }
-        else{
-            //return highestRatingHelper(maxLeft);
-            return tmp;
-        }
     }
     if(n->getRight()){
         Node* maxRight = highestRatingHelper(n->getRight());
         if(tmp -> getRating() < maxRight-> getRating()){
-            cout << tmp->getMovieName()<<endl;
-            cout<< maxRight->getMovieName() <<endl;
-            cout<< " end of loop"<<endl;
             tmp = maxRight; 
         } 
-    
-        else{
-            //return highestRatingHelper(maxRight);
-            return tmp;
-        }
     }
     return tmp;  
 }
