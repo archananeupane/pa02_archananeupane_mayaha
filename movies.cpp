@@ -62,7 +62,7 @@ void Node :: setParent(Node *n){
 
 //BST Functions
 BST::BST(){ //constructor
-    root = NULL; 
+    root = nullptr; 
 } 
 
 //BST :: ~BST () {   }

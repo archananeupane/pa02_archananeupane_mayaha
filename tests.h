@@ -4,11 +4,51 @@
 #include <iostream>
 using namespace std; 
 
+void runAll();
+void test_insert();
+void test_member_functions();
+void test_accessors_mutators();
 
+void test_insert_empty_BST();
+void test_insert_single_node();
+void test_node_construtor();
+//void test_BST_constructor();
+void test_search_prefix();
+//void test_highest_rating();
+void test_print_preorder();
 
+void START_TEST(string testname){
+  cout<<"Start "<<testname<<endl;
+}
 
+void END_TEST(string testname) {
+  cout<<"End "<<testname<<endl<<endl;
+}
 
+void assertEquals(string expected, string actual, string testDescription){
+  if (expected == actual) {
+    cout<<"PASSED " << endl;
+  } else {
+    cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
+  }
+}
 
+void assertEquals(int expected, int actual, string testDescription){
+    if (expected == actual) {
+    cout<<"PASSED " << endl;
+  } else {
+    cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
+  }
+}
+/*
+void assertEquals(int expected, Node* actual, string testDescription){
+    if (expected == actual) {
+    cout<<"PASSED " << endl;
+  } else {
+    cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
+  }
+}
+*/
 
 
 
