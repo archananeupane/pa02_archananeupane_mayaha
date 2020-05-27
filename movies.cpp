@@ -64,8 +64,8 @@ void Node :: setParent(Node *n){
 BST::BST(){ //constructor
     root = nullptr; 
 } 
-/*
-Node::~Node(){
+
+/*Node::~Node(){
     if(left){
         delete left;
     }
@@ -84,7 +84,7 @@ void BST::destroy(Node* n){
         destroy(n->getRight());
         delete n;
     }
-    //n = NULL;
+    n = NULL;
 }
 
 void BST :: printPreOrder() const{
