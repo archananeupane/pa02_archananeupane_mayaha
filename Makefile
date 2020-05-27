@@ -12,7 +12,8 @@ testscpps: tests.cpp movies.cpp tests.h movies.h
 	g++ $(CXX_FLAG) tests.cpp movies.cpp -c
 
 tests: tests.o movies.o
-	g++ $(CXX_FLAG) tests.o movies.o -o tests
+	g++ $(CXX_FLAG) tests.o movies.o -o tests  
+	./tests
 
 clean:
 	rm runMovies tests
