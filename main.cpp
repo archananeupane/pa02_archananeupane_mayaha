@@ -6,16 +6,12 @@
 #include <vector>
 #include <cstring>
 #include <algorithm>
-#include <set>
+#include <time>
 #include "movies.h"
 
 using namespace std;
 
 bool parseLine(string &line, string &movieName, double &movieRating);
-/*
-bool operator<(const Node& n1, const Node& n2){
-    return n1.getMovieName()<n2.getMovieName();
-} */
 int main(int argc, char** argv){
   if(argc < 4){
     cerr << "Usage: " << argv[ 0 ] << "arg1 arg2 arg3" << endl;
@@ -56,7 +52,10 @@ int main(int argc, char** argv){
   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
    cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
   }
-  //int* arr1 = tree.searchPrefix(argv[3], tree.getRoot());
+  else{
+    clock_t t;
+    t = clock();
+  }
   return 0;
 }
 

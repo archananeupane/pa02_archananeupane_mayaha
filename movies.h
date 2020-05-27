@@ -50,7 +50,6 @@ private:
 void printPreOrder(Node *n) const;
 bool insert(string name_source, double rating_source, Node *tmp, int level);
 Node* searchPrefixHelper(string prefix, BST* newTree, Node* n);
-//int* searchPrefixHelper(string prefix, int* arr1, Node* n, int count);
 Node* highestRatingHelper(Node* n);
 Node *root; 
 };
