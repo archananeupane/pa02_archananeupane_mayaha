@@ -7,7 +7,7 @@ using namespace std;
 class Node{
     public:
     Node();
-    ~Node();
+    //~Node();
     Node(string name, double rank, int level) : movie_name(name) , rating(rank), depth(level){
     left = right = parent = 0;}
     //accessors
@@ -52,7 +52,7 @@ void printPreOrder(Node *n) const;
 bool insert(string name_source, double rating_source, Node *tmp, int level);
 Node* searchPrefixHelper(string prefix, BST* newTree, Node* n);
 Node* highestRatingHelper(Node* n);
-//void destroy(Node* n);
+void destroy(Node* n);
 Node *root; 
 };
 
