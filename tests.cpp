@@ -26,7 +26,7 @@ void test_insert(){
 void test_member_functions(){
         START_TEST("test_member_functions");
         test_node_construtor();
-       // test_BST_constructor();
+        test_BST_constructor();
         test_search_prefix();
         //test_highest_rating();
         test_print_preorder();
@@ -36,6 +36,7 @@ void test_member_functions(){
 void test_accessors_mutators(){
     START_TEST("test_accessors_mutators");
     //functions
+    test_get_root();
     END_TEST("test_accessors_mutators");
 }
 
@@ -70,12 +71,12 @@ void test_node_construtor(){
     Node tmp;
     assertEquals(0, tmp.getRating(), testname);
 }
-/*
+
 void test_BST_constructor(){
     string testname = "check BST constructor";
     BST tmp;
     assertEquals(nullptr,tmp.getRoot(),testname);
-}*/
+}
 
 void test_search_prefix(){
     string testname = "find movies with the same prefix";
@@ -93,4 +94,10 @@ void test_print_preorder(){
     b1.insert("Parasite", 9.0);
     b1.insert("Lazy Larry", 2.4);
     //assertEquals("Lazy Larry, 2.4, 1", b1.printPreOrder(), testname);
+}
+
+void test_get_root(){
+    string testname = "check get root";
+    BST b1;
+    assertEquals(NULL, b1.getRoot(), testname);
 }

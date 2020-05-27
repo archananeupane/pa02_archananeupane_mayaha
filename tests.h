@@ -2,6 +2,7 @@
 #ifndef TESTS_H
 #define TESTS_H
 #include <iostream>
+#include "movies.h"
 using namespace std; 
 
 void runAll();
@@ -12,11 +13,11 @@ void test_accessors_mutators();
 void test_insert_empty_BST();
 void test_insert_single_node();
 void test_node_construtor();
-//void test_BST_constructor();
+void test_BST_constructor();
 void test_search_prefix();
 //void test_highest_rating();
 void test_print_preorder();
-
+void test_get_root();
 void START_TEST(string testname){
   cout<<"Start "<<testname<<endl;
 }
@@ -40,15 +41,15 @@ void assertEquals(int expected, int actual, string testDescription){
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
   }
 }
-/*
-void assertEquals(int expected, Node* actual, string testDescription){
+
+void assertEquals(Node* expected, Node* actual, string testDescription){
     if (expected == actual) {
     cout<<"PASSED " << endl;
   } else {
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
   }
 }
-*/
+
 
 
 
