@@ -6,7 +6,7 @@
 #include <vector>
 #include <cstring>
 #include <algorithm>
-#include <time>
+//#include <ctime>
 #include "movies.h"
 
 using namespace std;
@@ -52,10 +52,10 @@ int main(int argc, char** argv){
   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
    cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
   }
-  else{
-    clock_t t;
-    t = clock();
-  }
+  //else{
+    //clock_t t;
+    //t = clock();
+  //}
   return 0;
 }
 
