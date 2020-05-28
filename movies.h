@@ -52,8 +52,8 @@ void printPreOrder(Node *n) const;
 bool insert(string name_source, double rating_source, Node *tmp, int level);
 Node* searchPrefixHelper(string prefix, BST* newTree, Node* n);
 Node* highestRatingHelper(Node* n);
-void destroy(Node* n);
 Node *root; 
+void destroy(Node* n);
 };
 
 

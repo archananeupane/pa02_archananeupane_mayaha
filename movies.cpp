@@ -74,18 +74,17 @@ Node::~Node(){
     }
 }*/
 
-BST :: ~BST () {  
-    destroy(root);
- }
-
 void BST::destroy(Node* n){
     if(n){
         destroy(n->getLeft());
         destroy(n->getRight());
         delete n;
     }
-    //n = NULL;
 }
+
+BST::~BST() {  
+    destroy(root);
+ }
 
 void BST :: printPreOrder() const{
     printPreOrder(getRoot());
