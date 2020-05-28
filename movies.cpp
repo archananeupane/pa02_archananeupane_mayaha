@@ -80,10 +80,6 @@ void BST::destroy(Node* n){
         destroy(n->getRight());
         delete n;
     }
-<<<<<<< HEAD
-=======
-    n = NULL;
->>>>>>> 6f975aef5c9d774c1a0b989212b4c3459a20dcbc
 }
 
 BST::~BST() {  
@@ -155,15 +151,16 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp, int leve
     }
 }
 
-Node* BST :: searchPrefix(string prefix, Node *n){
+BST* BST :: searchPrefix(string prefix, Node *n){
     BST* newTree = new BST; 
     if (!n){
         return NULL;
     }
-    return searchPrefixHelper(prefix,newTree, n);
+    searchPrefixHelper(prefix,newTree, n);
+    return newTree;
 } 
 
-Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
+void BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){ //change type to BST*
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
             newTree->insert(n->getMovieName(), n->getRating());
@@ -177,14 +174,14 @@ Node* BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){
             return searchPrefixHelper(prefix, newTree, n->getLeft());
         } 
     }   
-        return newTree->getRoot();
+        //return ; //return void
 }
 
-Node* BST :: highestRating(Node* n){
+Node* BST :: highestRating(BST* n){
     if(!n){
         return NULL;
     } 
-    return highestRatingHelper(n);
+    return highestRatingHelper(n->getRoot());
 }
 
 Node* BST :: highestRatingHelper(Node* n){
@@ -206,4 +203,21 @@ Node* BST :: highestRatingHelper(Node* n){
     }
     return tmp;  
 }
+
+Node* BST :: search(string name, Node* n){
+    Node* tmp = n;
+    while(tmp){
+        if(name ==  tmp->getMovieName()){
+            return tmp;
+        }
+        if(name < tmp->getMovieName()){
+            search(name, tmp->getLeft());
+        }
+        else{
+            search(name, tmp-> getRight());
+        }
+    }
+    return tmp;
+}
+
 

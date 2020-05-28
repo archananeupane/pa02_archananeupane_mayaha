@@ -6,7 +6,6 @@
 #include <vector>
 #include <cstring>
 #include <algorithm>
-//#include <ctime>
 #include "movies.h"
 
 using namespace std;
@@ -42,6 +41,7 @@ int main(int argc, char** argv){
 
   // Read each file and store the name and rating
   BST tree; 
+  vector <string> movieNames;
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
   tree.insert(movieName, movieRating); 
   }
@@ -52,10 +52,17 @@ int main(int argc, char** argv){
   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
    cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
   }
-  //else{
-    //clock_t t;
-    //t = clock();
-  //}
+  /*
+  else{
+    clock_t t;
+    t = clock();
+    for(int i = 0; i < atoi(argv[3]); i++){
+      tree.search([i], tree.getRoot());
+    }
+    t = clock() - t;
+    movieNames.push_back(t);
+    cout << t << endl;
+  } */
   return 0;
 }
 
