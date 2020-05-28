@@ -174,14 +174,17 @@ void BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){ //change t
             return searchPrefixHelper(prefix, newTree, n->getLeft());
         } 
     }   
-        //return ; //return void
+        
 }
 
 Node* BST :: highestRating(BST* n){
-    if(!n){
+    if(!n->getRoot()){
         return NULL;
     } 
-    return highestRatingHelper(n->getRoot());
+    Node* tmp2 = highestRatingHelper(n->getRoot());
+    Node* p = new Node(tmp2->getMovieName(), tmp2->getRating(), tmp2->getDepth());
+    delete n;
+    return p;
 }
 
 Node* BST :: highestRatingHelper(Node* n){
