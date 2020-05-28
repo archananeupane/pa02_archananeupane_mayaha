@@ -94,7 +94,7 @@ void test_search_prefix(){
     b1.insert("Lion King", 8.7);
     b1.insert("Parasite", 9.0);
     b1.insert("Lazy Larry", 2.4);
-    assertEquals("Parasite", b1.searchPrefix("Par", b1.getRoot())->getMovieName(), testname);
+    assertEquals("Parasite", b1.searchPrefix("Par", b1.getRoot())->getRoot()->getMovieName(), testname);
 }
 
 void test_print_preorder(){

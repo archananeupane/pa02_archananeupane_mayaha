@@ -134,7 +134,7 @@ bool BST :: insert(string name_source, double rating_source, Node *tmp, int leve
             return true;
         }
     }
-    else{ 
+    else{
         if(tmp -> getRight()){
             return insert(name_source, rating_source, tmp ->getRight(), level+1);
         }
