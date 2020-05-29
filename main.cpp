@@ -40,13 +40,18 @@ int main(int argc, char** argv){
   // to contain the name and rating in the input file
 
   // Read each file and store the name and rating
+  ofstream out;
+  out.open("out.txt");
+  out<<"N vs N_visited" <<endl;
   BST tree; 
   vector <string> movieNames;
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
-  tree.insert(movieName, movieRating); 
+    tree.insert(movieName, movieRating); 
+    out<<tree.counter;
   }
   movieFile.close();
-    
+  cout<<tree.counter<<endl;
+
   if (flag == true){
    tree.printPreOrder();
   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
