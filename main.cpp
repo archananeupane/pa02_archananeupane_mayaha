@@ -72,7 +72,6 @@ int main(int argc, char** argv){
   return 0;
 }
 
-
 bool parseLine(string &line, string &movieName, double &movieRating) {
   if(line.length() <= 0) return false;
   string tempRating = "";
