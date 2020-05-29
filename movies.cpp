@@ -161,6 +161,7 @@ BST* BST :: searchPrefix(string prefix, Node *n){
 } 
 
 void BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){ //change type to BST*
+    int i;
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
             newTree->insert(n->getMovieName(), n->getRating());
