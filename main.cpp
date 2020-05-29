@@ -45,13 +45,14 @@ int main(int argc, char** argv){
   out<<"N vs N_visited" <<endl;
   BST tree; 
   vector <string> movieNames;
+  vector <double> runTimes;
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
     tree.insert(movieName, movieRating); 
+    movieNames.push_back(movieName);
     out<<tree.counter;
   }
   movieFile.close();
   cout<<tree.counter<<endl;
-
   if (flag == true){
    tree.printPreOrder();
   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
@@ -61,13 +62,15 @@ int main(int argc, char** argv){
   /*
   else{
     clock_t t;
-    t = clock();
+    t = clock(); 
     for(int i = 0; i < atoi(argv[3]); i++){
-      tree.search([i], tree.getRoot());
+      for(int j = 0; j <movieNames.size(); j++){
+        tree.search(movieNames[j], tree.getRoot());
+      }
+     // runTimes.push_back(t);
     }
-    t = clock() - t;
-    movieNames.push_back(t);
-    cout << t << endl;
+    //t = clock() - t;
+    //cout << runTimes << endl;
   } */
   return 0;
 }
