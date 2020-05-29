@@ -28,7 +28,8 @@ void test_member_functions(){
         test_node_construtor();
         test_BST_constructor();
         test_search_prefix();
-        //test_highest_rating();
+        test_search();
+        test_highest_rating();
         test_print_preorder();
         END_TEST("test_member_functions");
 }
@@ -79,7 +80,7 @@ void test_insert_single_node(){
 void test_node_construtor(){
     string testname= "check Node constructor";
     Node tmp;
-    assertEquals(0, tmp.getRating(), testname);
+    assertEquals(0.0, tmp.getRating(), testname);
 }
 
 void test_BST_constructor(){
@@ -97,13 +98,33 @@ void test_search_prefix(){
     assertEquals("Parasite", b1.searchPrefix("Par", b1.getRoot())->getRoot()->getMovieName(), testname);
 }
 
+void test_search(){
+    string testname = "returns pointer to node with wanted prefix";
+    BST b1;
+    b1.insert("Lion King", 8.7);
+    b1.insert("Parasite", 9.0);
+    b1.insert("Lazy Larry", 2.4);
+    Node* tmp = b1.search("Lazy Larry", b1.getRoot());
+    assertEquals("Lazy Larry", tmp -> getMovieName(), testname);
+}
+void test_highest_rating(){
+    string testname = "returns node with highest rating movie of given prefix of BST";
+    BST b1; 
+    b1.insert("Lion King", 8.7);
+    b1.insert("Parasite", 9.0);
+    b1.insert("Lazy Larry", 2.4);
+    Node* tmp = b1.highestRating(b1.searchPrefix("L", b1.getRoot()));
+    assertEquals(8.7, tmp ->getRating(), testname);
+}
+
 void test_print_preorder(){
     string testname = "print out preorder of BST";
     BST b1;
     b1.insert("Lion King", 8.7);
     b1.insert("Parasite", 9.0);
     b1.insert("Lazy Larry", 2.4);
-    //assertEquals("Lazy Larry, 2.4, 1", b1.printPreOrder(), testname);
+    assertEquals("Lion King","Lazy Larry","Parasite", b1.getRoot()->getMovieName(), b1.getRoot()->getLeft()->getMovieName(),
+    b1.getRoot()->getRight()->getMovieName(), testname);
 }
 
 void test_get_root(){
@@ -145,14 +166,14 @@ void test_set_movie_name(){
 void test_get_rating(){
     string testname = "check get rating";
     Node n1;
-    assertEquals(0, n1.getRating(), testname);
+    assertEquals(0.0, n1.getRating(), testname);
 }
 
 void test_set_rating(){
     string testname = "check set rating";
     Node n1;
     n1.setRating(4.0);
-    assertEquals(4, n1.getRating(), testname);
+    assertEquals(4.0, n1.getRating(), testname);
 }
 
 void test_get_left(){

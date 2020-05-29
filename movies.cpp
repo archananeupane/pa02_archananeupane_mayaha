@@ -65,15 +65,6 @@ BST::BST(){ //constructor
     root = nullptr; 
 } 
 
-/*Node::~Node(){
-    if(left){
-        delete left;
-    }
-    if(right){
-        delete right;
-    }
-}*/
-
 void BST::destroy(Node* n){
     if(n){
         destroy(n->getLeft());
@@ -160,7 +151,7 @@ BST* BST :: searchPrefix(string prefix, Node *n){
     return newTree;
 } 
 
-void BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){ //change type to BST*
+void BST :: searchPrefixHelper(string prefix, BST* newTree, Node* n){ 
     int i;
     if(n){
         if(n->getMovieName().substr(0, prefix.size()) == prefix){
@@ -210,15 +201,15 @@ Node* BST :: highestRatingHelper(Node* n){
 
 Node* BST :: search(string name, Node* n){
     Node* tmp = n;
-    while(tmp){
+    if(tmp){
         if(name ==  tmp->getMovieName()){
             return tmp;
         }
-        if(name < tmp->getMovieName()){
-            search(name, tmp->getLeft());
+        else if(name < tmp->getMovieName()){
+            return search(name, tmp->getLeft());
         }
         else{
-            search(name, tmp-> getRight());
+            return search(name, tmp-> getRight());
         }
     }
     return tmp;

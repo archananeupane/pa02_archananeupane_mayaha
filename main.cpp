@@ -4,6 +4,9 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <cstdlib>
+#include "time.h"
+#include <iomanip>
 #include <cstring>
 #include <algorithm>
 #include "movies.h"
@@ -41,37 +44,42 @@ int main(int argc, char** argv){
 
   // Read each file and store the name and rating
   ofstream out;
-  out.open("out.txt");
-  out<<"N vs N_visited" <<endl;
+  out.open("out.csv");
+  out<<"N"<<"," << "N_visited" <<endl;
   BST tree; 
   vector <string> movieNames;
   vector <double> runTimes;
+
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
     tree.insert(movieName, movieRating); 
     movieNames.push_back(movieName);
-    out<<tree.counter;
+    out<<tree.counter<<","<<tree.node_level<<endl;
   }
+  out.close();
   movieFile.close();
-  cout<<tree.counter<<endl;
   if (flag == true){
    tree.printPreOrder();
   Node* tmp = tree.highestRating(tree.searchPrefix(argv[3], tree.getRoot()));
    cout<< endl << "Best movie is " << tmp ->getMovieName() <<" with rating " << tmp->getRating() <<endl;
    delete tmp;
   }
-  /*
   else{
-    clock_t t;
+    clock_t t, p;
     t = clock(); 
     for(int i = 0; i < atoi(argv[3]); i++){
       for(int j = 0; j <movieNames.size(); j++){
         tree.search(movieNames[j], tree.getRoot());
       }
-     // runTimes.push_back(t);
-    }
-    //t = clock() - t;
-    //cout << runTimes << endl;
-  } */
+      p = clock();
+      double time_taken = (double(p - t)*1000000)/ double(CLOCKS_PER_SEC);
+      runTimes.push_back(time_taken);
+     }
+    cout<< "Minimum time is " << *min_element(runTimes.begin(),runTimes.end()) <<endl;
+    cout<< "Maximum time is " << *max_element(runTimes.begin(), runTimes.end()) <<endl;
+    sort(runTimes.begin(), runTimes.end());
+    cout<< "Median time is " << runTimes[atoi(argv[3])/2] <<endl;
+    } 
+  
   return 0;
 }
 

@@ -7,7 +7,6 @@ using namespace std;
 class Node{
     public:
     Node();
-    //~Node();
     Node(string name, double rank, int level) : movie_name(name) , rating(rank), depth(level){
     left = right = parent = 0;}
     //accessors
@@ -25,13 +24,11 @@ class Node{
     void setRight(Node* n);
     void setLeft(Node *n);
 
-
     private:
     string movie_name;
     double rating; 
-    int depth; // number of nodes on the path from the root to the node containing the movie
+    int depth; 
     Node *left, *right, *parent; 
-
 };
 
 class BST{
@@ -56,6 +53,5 @@ Node* highestRatingHelper(Node* n);
 Node *root; 
 void destroy(Node* n);
 };
-
 
 #endif

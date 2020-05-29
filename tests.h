@@ -15,7 +15,8 @@ void test_insert_single_node();
 void test_node_construtor();
 void test_BST_constructor();
 void test_search_prefix();
-//void test_highest_rating();
+void test_search();
+void test_highest_rating();
 void test_print_preorder();
 void test_get_root();
 void test_get_parent();
@@ -61,9 +62,23 @@ void assertEquals(Node* expected, Node* actual, string testDescription){
   }
 }
 
+void assertEquals(string expected1, string expected2, string expected3, string actual1, string actual2, string actual3,
+ string testDescription){
+  if ((expected1 == actual1)&&(expected2 == actual2) && (expected3 == actual3)) {
+    cout<<"PASSED " << endl;
+  } else {
+    cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected1 << expected2 << expected3<< 
+     " Actual: " << actual1 << actual2 << actual3 << endl;
+  }
+}
 
-
-
+void assertEquals(double expected, double actual, string testDescription){
+    if (expected == actual) {
+    cout<<"PASSED " << endl;
+  } else {
+    cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
+  }
+}
 
 
 #endif
